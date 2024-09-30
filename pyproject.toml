@@ -1,9 +1,9 @@
 [project]
-name = "api-yatube"
-version = "0.2.0"
-description = "CRUD API for Yatube"
-readme = "README.md"
-requires-python = "==3.9.13"
+name = 'api-yatube'
+version = '0.2.0'
+description = 'CRUD API for Yatube'
+readme = 'README.md'
+requires-python = '==3.9.13'
 dependencies = [
     'Django==3.2.16',
     'pytest==6.2.4',
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [tool.ruff]
-target-version = "py39"
+target-version = 'py39'
 line-length = 79
 fix = true
 
@@ -26,5 +26,8 @@ quote-style = 'single'
 docstring-code-format = true
 
 [tool.ruff.lint]
-preview = true
-select = ["I"]
+select = ['I', 'I001']
+extend-select = ['I']
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
