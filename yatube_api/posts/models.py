@@ -49,3 +49,9 @@ class Follow(models.Model):
     following = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='followers'
     )
+
+    class Meta:
+        unique_together = ('user', 'following')
+
+    def __str__(self) -> str:
+        return f'{self.user} follows {self.following}'
