@@ -3,6 +3,8 @@ from django.db import models
 
 User = get_user_model()
 
+MAX_TEXT_LENGTH = 50
+
 
 class Post(models.Model):
     text = models.TextField()
@@ -20,7 +22,7 @@ class Post(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.text
+        return self.text[:MAX_TEXT_LENGTH]
 
 
 class Comment(models.Model):
@@ -35,11 +37,17 @@ class Comment(models.Model):
         'Дата добавления', auto_now_add=True, db_index=True
     )
 
+    def __str__(self) -> str:
+        return self.text[:MAX_TEXT_LENGTH]
+
 
 class Group(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=50)
     description = models.TextField()
+
+    def __str__(self) -> str:
+        return self.title[:MAX_TEXT_LENGTH]
 
 
 class Follow(models.Model):
