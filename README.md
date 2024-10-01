@@ -51,6 +51,7 @@ Bellow are some examples of API requests:
 Request:
 ```http
 GET /api/v1/posts/
+```
 
 Response:
 ```json
@@ -68,7 +69,7 @@ Response:
         "author": "username"
     }
 ]
-
+```
 ### Create a new posts
 
 Request:
@@ -80,6 +81,7 @@ Content-Type: application/json
     "title": "New Post",
     "content": "Content of the new post"
 }
+```
 
 Response:
 ```json
@@ -89,3 +91,4 @@ Response:
     "content": "Content of the new post",
     "author": "username"
 }
+```
