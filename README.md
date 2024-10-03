@@ -14,6 +14,17 @@ Key features include:
 
 This API serves as the backend for a modern social networking application, focusing on usability and scalability.
 
+## Stack
+
+- Python: 3.9.13
+- Django: 3.2
+- Django Rest Framework (DRF)
+- Authentication: PyJWT 
+- Database: SQLite
+- Testing: PyTest
+- Code Quality: Ruff
+- Import Sorting: Isort
+
 ## Installation
 
 To set up the project on your local machine, follow these steps:
@@ -41,6 +52,12 @@ To set up the project on your local machine, follow these steps:
 6. Start the server:
     ```bash
     python manage.py runserver
+
+## Project Specifications
+
+The project specifications are available at the following path:
+
+API Documentation: http://localhost:8000/redoc/
 
 ## Usage example
 
@@ -92,3 +109,11 @@ Response:
     "author": "username"
 }
 ```
+
+## Author
+
+[RockurDev](https://github.com/RockurDev)
+
+## Project Link
+
+[API for Yatube](https://github.com/RockurDev/api_final_yatube/blob/master/README.md)
