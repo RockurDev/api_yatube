@@ -27,9 +27,7 @@ fix = true
 quote-style = 'single'
 docstring-code-format = true
 
-[tool.ruff.lint]
-select = ['I', 'I001']
-extend-select = ['I']
+[tool.isort]
+known_local_folder=['posts','api']
+sections=['FUTURE','STDLIB','THIRDPARTY','LOCALFOLDER']
 
-[tool.ruff.lint.isort]
-combine-as-imports = true
