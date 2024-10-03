@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import F, Q
 
 User = get_user_model()
 
@@ -20,6 +21,9 @@ class Post(models.Model):
         null=True,
         blank=True,
     )
+
+    class Meta:
+        ordering = ('-pub_date',)
 
     def __str__(self) -> str:
         return self.text[:MAX_TEXT_LENGTH]
@@ -52,14 +56,24 @@ class Group(models.Model):
 
 class Follow(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='followings'
+        User, on_delete=models.CASCADE, related_name='following'
     )
     following = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='followers'
     )
 
     class Meta:
-        unique_together = ('user', 'following')
+        constraints = (
+            models.UniqueConstraint(
+                fields=('user', 'following'),
+                name='unique_following',
+            ),
+            models.CheckConstraint(
+                # not (user is equal to the value of the following)
+                check=~Q(user=F('following')),
+                name='prevent_self_follow',
+            ),
+        )
 
     def __str__(self) -> str:
         return f'{self.user} follows {self.following}'
